@@ -19,20 +19,18 @@ const Form = ({ closeModal }) => {
     const today = new Date();
     const dobDate = new Date(dob);
 
-    // Check if any field is empty
     if (!username || !email || !phone || !dob) {
       alert("All fields are required. Please fill in all the details.");
       return;
     }
 
-    // Check if date of birth is in the future
     if (dobDate > today) {
       alert("Invalid date of birth. Date of Birth cannot be in the future.");
       return;
     }
 
     console.log("Form Data Submitted:", formData);
-    closeModal(); // Close modal only if validation passes
+    closeModal(); 
   };
 
   return (
