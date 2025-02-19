@@ -19,18 +19,27 @@ const Form = ({ closeModal }) => {
     const today = new Date();
     const dobDate = new Date(dob);
 
+    // सभी फ़ील्ड चेक करें
     if (!username || !email || !phone || !dob) {
       alert("All fields are required. Please fill in all the details.");
       return;
     }
 
+    // फोन नंबर की जाँच (सिर्फ 10 अंकों का हो)
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(phone)) {
+      alert("Invalid phone number. Please enter a 10-digit phone number.");
+      return;
+    }
+
+    // जन्मतिथि की जाँच (भविष्य की नहीं होनी चाहिए)
     if (dobDate > today) {
-      alert("Invalid date of birth. Date of Birth cannot be in the future.");
+      alert("Invalid date of birth. Date of birth cannot be in the future.");
       return;
     }
 
     console.log("Form Data Submitted:", formData);
-    closeModal(); 
+    closeModal();
   };
 
   return (
@@ -67,10 +76,9 @@ const Form = ({ closeModal }) => {
               type="tel"
               name="phone"
               className="form-control mb-2"
-              pattern="[0-9]{10}"
-              maxLength="10"
               value={formData.phone}
               onChange={handleChange}
+              maxLength="10"
             />
           </div>
 
