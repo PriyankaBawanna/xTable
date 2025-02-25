@@ -53,47 +53,61 @@ function EXModel() {
       {isModalOpen && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="dob">Date of Birth:</label>
-                <input
-                  type="date"
-                  id="dob"
-                  value={dob}
-                  onChange={(e) => setDob(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="phone">Phone:</label>
-                <input
-                  type="text"
-                  id="phone"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-              <button type="submit" className="submit-button">
-                Submit
-              </button>
-            </form>
+          <div className="bg-white p-4 ">
+        <h3 className="text-center fw-bold">Fill Details</h3>
+        <form onSubmit={handleSubmit} className="d-flex flex-column">
+          
+          <div className="d-flex flex-column align-items-center">
+            <label className="fw-bold text-center mb-2">Username:</label>
+            <input
+              type="text"
+              name="username"
+              className="form-control mb-2"
+              value={formData.username}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="d-flex flex-column align-items-center">
+            <label className="fw-bold text-center mb-2">Email Address:</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control mb-2"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="d-flex flex-column align-items-center">
+            <label className="fw-bold text-center mb-2">Phone Number:</label>
+            <input
+              type="tel"
+              name="phone"
+              className="form-control mb-2"
+              value={formData.phone}
+              onChange={handleChange}
+              maxLength="10"
+            />
+          </div>
+
+          <div className="d-flex flex-column align-items-center">
+            <label className="fw-bold text-center mb-2">Date of Birth:</label>
+            <input
+              type="date"
+              name="dob"
+              className="form-control mb-3"
+              value={formData.dob}
+              onChange={handleChange}
+              max={new Date().toISOString().split("T")[0]} // Restrict future dates
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary w-100">
+            Submit
+          </button>
+        </form>
+      </div>
           </div>
         </div>
       )}

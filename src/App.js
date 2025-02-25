@@ -4,14 +4,15 @@ import Table from './Table';
 import Model from './Model';
 import Form from './Form';
 import EXModel from './EXModel';
+import NameForm from './Name';
 
 function App() {
   return (
     <div className="d-flex justify-content-center flex-column align-items-center">
-      <h1>User Details Modal</h1>
-      <EXModel />
+      <NameForm />
     </div>
   );
 }
 
 export default App;
+ 
