@@ -9,7 +9,7 @@ const Model = ({ children }) => {
   };
 
   const handleCloseModal = (e) => {
-    // Close modal only if clicking on the background, not on the modal itself
+  
     if (e.target.classList.contains("modal-overlay")) {
       setShow(false);
     }
